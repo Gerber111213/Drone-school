@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canadian Flight School & ROC-A Academy</title>
+  <title>Canadian Flight School & ROC-A Academy (100+ Slides)</title>
   <style>
     :root {
       --bg: #0d1117;
@@ -120,14 +120,14 @@
 <div class="container">
   <div class="header">
     <h1 style="margin: 0; color: var(--text-bright);">Canadian Flight School & ROC-A Academy</h1>
-    <p style="color: #8b949e; margin: 4px 0 0 0;">Private Pilot Ground School • 100+ Slide Curriculum & Gated Quizzes</p>
+    <p style="color: #8b949e; margin: 4px 0 0 0;">Comprehensive 100+ Slide Ground School & 80% Gated Quizzes</p>
   </div>
 
   <!-- DASHBOARD VIEW -->
   <div id="dashboard-view">
     <div class="card">
       <h3>Select Training Module</h3>
-      <p style="font-size: 14px; color: #8b949e;">Complete slides and pass module quizzes with 80%+ to unlock advanced sections.</p>
+      <p style="font-size: 14px; color: #8b949e;">Progress sequentially through the 8 core modules. Pass each module quiz with 80%+ to unlock the next.</p>
       
       <div class="module-grid" id="module-buttons">
         <!-- Generated via JS -->
@@ -138,7 +138,7 @@
     <div class="card" style="border-color: var(--brand-blue);">
       <span class="badge" style="background: rgba(88,166,255,0.2); color: var(--brand-blue); border:1px solid var(--brand-blue);">Specialty Course</span>
       <h3 style="color: var(--brand-blue); margin-top: 10px;">📻 ROC-A Certification (Radio Operator)</h3>
-      <p style="font-size: 14px; color: #8b949e;">Restricted Operator Certificate with Aeronautical Qualification. Master aviation telephony, distress calls (Mayday/Pan-Pan), and phraseology.</p>
+      <p style="font-size: 14px; color: #8b949e;">Restricted Operator Certificate with Aeronautical Qualification. Telephony standards, MAYDAY/PAN-PAN protocol, and phraseology mastery.</p>
       <button class="specialty-btn" onclick="startSpecialtyROC()">Launch ROC-A Ground School</button>
     </div>
   </div>
@@ -182,192 +182,208 @@
 </div>
 
 <script>
-  // 100+ SLIDES BROKEN INTO 8 CORE MODULES + ROC-A SPECIALTY
+  // 100+ GRANULAR SLIDES ACROSS 8 MODULES + ROC-A
   const curriculum = [
     {
       id: 0,
       title: "1. Air Law & Regulations",
       slides: [
-        { title: "Introduction to CARs", text: "Canadian Aviation Regulations (CARs) govern all civil aviation in Canada. They ensure standardization, safety, and accountability for pilots and operators." },
-        { title: "Pilot-in-Command (PIC)", text: "The PIC holds final authority and responsibility for the operation and safety of the aircraft during flight time (CAR 602.03)." },
-        { title: "Pre-flight Actions", text: "Before every flight, the PIC must become familiar with all available information appropriate to the flight, including weather reports, NOTAMs, and fuel calculations." },
-        { title: "Alcohol and Drugs", text: "CAR 602.03(1) prohibits operating an aircraft within 12 hours of consuming alcohol, while under the influence, or while impaired by any drug." },
-        { title: "Right-of-Way Rules", text: "Converging aircraft: aircraft on the right has right-of-way. Head-on: both alter heading to the right. Overtaking: pass on the right." },
-        { title: "ELT Requirements", text: "Emergency Locator Transmitters (ELTs) must operate on 406 MHz and be inspected annually and after hard landings." },
-        { title: "CARs Enforcement & Penalties", text: "Transport Canada enforces violations through monetary penalties, license suspensions, or cancellations under the Aeronautics Act." },
-        { title: "Aircraft Documentation", text: "Required documents onboard: C-of-R, C-of-A, Journey Log, Weight & Balance data, Radio Station License, and Insurance." },
-        { title: "VFR Flight Rules", text: "Visual Flight Rules require minimum visibility and cloud separation distances depending on airspace class and altitude." },
-        { title: "CARs Summary", text: "Adherence to the CARs guarantees legal protection, safe separation, and proper operational discipline across Canadian airspace." }
+        { title: "1.1 Introduction to CARs", text: "Canadian Aviation Regulations (CARs) govern all civil aviation operations across Canada, ensuring strict standardization, safety, and operational accountability." },
+        { title: "1.2 The Pilot-in-Command (PIC)", text: "Under CAR 602.03, the Pilot-in-Command holds final operational authority and absolute responsibility for the safety of the aircraft during flight time." },
+        { title: "1.3 Mandatory Pre-Flight Actions", text: "Before initiating any flight, the PIC must review all applicable weather reports, NOTAMs, fuel requirements, and alternate aerodromes." },
+        { title: "1.4 Alcohol and Drug Prohibition", text: "CAR 602.03(1) prohibits operating an aircraft within 12 hours of consuming alcohol, while under the influence, or while impaired by any substance." },
+        { title: "1.5 Right-of-Way: Convergence", text: "When two aircraft converge at approximately the same altitude, the aircraft to the right has the right-of-way. Head-on: both alter heading right." },
+        { title: "1.6 Right-of-Way: Overtaking", text: "An aircraft being overtaken has the right-of-way. The overtaking aircraft must alter heading to pass safely on the right." },
+        { title: "1.7 Emergency Locator Transmitters", text: "ELTs must operate on 406 MHz frequency and be certified annually as well as following any hard landing or impact event." },
+        { title: "1.8 Enforcement and Penalties", text: "Transport Canada enforces regulatory infractions through monetary fines, license suspensions, or permanent cancellations under the Aeronautics Act." },
+        { title: "1.9 Mandatory Aircraft Documents", text: "Aircraft must carry the Certificate of Registration, Certificate of Airworthiness, Journey Log, Weight & Balance data, Radio License, and Insurance." },
+        { title: "1.10 VFR Flight Rules Baseline", text: "Visual Flight Rules require mandatory meteorological visibility and cloud separation distances scaled by airspace class and altitude." },
+        { title: "1.11 Airspace Infractions", text: "Entering controlled airspace without clearance constitutes a serious regulatory infraction logged for immediate investigation." },
+        { title: "1.12 Air Law Summary", text: "Total compliance with CARs guarantees legal protection, structural safety, and orderly integration into Canadian airspace." }
       ],
       quiz: [
-        { q: "Who holds final authority for the safety of an aircraft?", options: ["Air Traffic Control", "The Pilot-in-Command", "Transport Canada", "The Aircraft Owner"], correct: 1 },
-        { q: "What is the minimum alcohol prohibition window prior to flight under CARs?", options: ["6 hours", "8 hours", "12 hours", "24 hours"], correct: 2 },
-        { q: "When two aircraft converge at the same altitude, who has right-of-way?", options: ["The faster aircraft", "The aircraft on the left", "The aircraft on the right", "The heavier aircraft"], correct: 2 }
+        { q: "Who holds final operational authority for an aircraft?", options: ["Air Traffic Control", "The Pilot-in-Command", "Transport Canada", "The Airport Manager"], correct: 1 },
+        { q: "What is the mandatory minimum alcohol restriction window before flight?", options: ["6 hours", "8 hours", "12 hours", "24 hours"], correct: 2 },
+        { q: "When two aircraft converge at the same altitude, who yields?", options: ["The aircraft on the right", "The aircraft on the left", "The faster aircraft", "The lighter aircraft"], correct: 1 }
       ]
     },
     {
       id: 1,
       title: "2. Meteorology & Weather",
       slides: [
-        { title: "Atmospheric Composition", text: "The atmosphere is composed of 78% nitrogen, 21% oxygen, and 1% trace gases. Standard Sea Level pressure is 29.92 inHg or 1013.2 mb." },
-        { title: "METAR & TAF Reports", text: "METARs provide current surface weather observations. TAFs provide terminal aerodrome forecasts for expected conditions over a 24-hour window." },
-        { title: "Density Altitude", text: "Density altitude is pressure altitude corrected for non-standard temperature. High density altitude severely degrades aircraft engine performance and lift." },
-        { title: "Icing Hazards", text: "Airframe icing disrupts airflow over wings, reducing lift and increasing weight. Rime ice and clear ice present severe aerodynamic dangers." },
-        { title: "Thunderstorms & Wind Shear", text: "Thunderstorms present severe turbulence, hail, lightning, and microburst wind shear. Pilots must maintain a minimum 15 NM buffer." },
-        { title: "Fog Formation", text: "Radiation fog forms on clear, calm nights as ground cools. Advection fog forms when warm, moist air moves over a cold surface." },
-        { title: "Pressure Systems",    text: "High-pressure systems rotate clockwise with descending air (good weather). Low-pressure systems rotate counter-clockwise with rising unstable air." },
-        { title: "Frontal Boundaries", text: "Cold fronts bring abrupt weather changes and squall lines. Warm fronts bring steady, widespread precipitation and low ceilings." },
-        { title: "Wind Patterns & Coriolis", text: "Earth's rotation deflects wind to the right in the Northern Hemisphere (Coriolis effect), altering wind flow relative to isobars." },
-        { title: "Aviation Weather Summary", text: "Constant weather monitoring via GAFs, METARs, and inflight observations is vital for safe cross-country navigation." }
+        { title: "2.1 Atmospheric Composition", text: "The atmosphere consists of 78% nitrogen, 21% oxygen, and 1% trace gases. Standard Sea Level pressure is 29.92 inHg or 1013.2 mb." },
+        { title: "2.2 METAR Observations", text: "METARs provide hourly surface weather observations including wind, visibility, weather phenomena, cloud ceilings, and altimeter settings." },
+        { title: "2.3 TAF Forecasts", text: "Terminal Aerodrome Forecasts provide expected meteorological conditions within a 5 NM radius of an airport over a 24-hour cycle." },
+        { title: "2.4 Density Altitude Mechanics", text: "Density altitude is pressure altitude corrected for non-standard temperature. High density altitude degrades engine power and wing lift." },
+        { title: "2.5 Airframe Icing Hazards", text: "Supercooled water droplets freeze on contact, disrupting smooth airflow over wings, increasing weight, and inducing stall hazards." },
+        { title: "2.6 Thunderstorm Anatomy", text: "Thunderstorms feature extreme turbulence, hail, lightning, and microbursts. Pilots must maintain a 15 NM buffer zone." },
+        { title: "2.7 Fog Formation Mechanisms", text: "Radiation fog forms on clear calm nights. Advection fog forms when warm moist air passes over a cold land or water surface." },
+        { title: "2.8 High and Low Pressure Systems", text: "High-pressure cells feature descending air and clear skies. Low-pressure cells feature rising unstable air, clouds, and precipitation." },
+        { title: "2.9 Frontal Boundaries", text: "Cold fronts produce sharp squall lines and abrupt weather shifts. Warm fronts bring prolonged steady precipitation and low ceilings." },
+        { title: "2.10 Coriolis Deflection", text: "Earth's rotation deflects wind to the right in the Northern Hemisphere, governing wind flow relative to pressure isobars." },
+        { title: "2.11 Wind Shear and Microbursts", text: "Sudden changes in wind speed or direction over a short distance create severe landing and takeoff control hazards." },
+        { title: "2.12 Aviation Weather Summary", text: "Diligent interpretation of GAFs, METARs, and TAFs is vital to safe cross-country routing." }
       ],
       quiz: [
-        { q: "What is Standard Sea Level atmospheric pressure?", options: ["28.50 inHg", "29.92 inHg", "30.10 inHg", "1013.2 inHg"], correct: 1 },
-        { q: "What does high density altitude do to aircraft performance?", options: ["Improves takeoff performance", "Increases engine horsepower", "Degrades performance and reduces lift", "Has no effect"], correct: 2 },
-        { q: "Which fog type forms when warm moist air moves over a cold surface?", options: ["Radiation fog", "Upslope fog", "Advection fog", "Steam fog"], correct: 2 }
+        { q: "What is Standard Sea Level pressure?", options: ["28.50 inHg", "29.92 inHg", "30.10 inHg", "1013.2 inHg"], correct: 1 },
+        { q: "What effect does high density altitude have on aircraft performance?", options: ["Improves climb rate", "Increases engine output", "Degrades performance and reduces lift", "No impact"], correct: 2 },
+        { q: "Which fog type forms when warm moist air moves across a cold surface?", options: ["Radiation fog", "Advection fog", "Upslope fog", "Steam fog"], correct: 1 }
       ]
     },
     {
       id: 2,
       title: "3. Planning & Pre-Flight",
       slides: [
-        { title: "Weight and Balance Principles", text: "Center of Gravity (CG) limits must be maintained within the flight envelope. Exceeding forward or aft limits compromises control authority." },
-        { title: "Moment Calculation", text: "Moment equals Weight multiplied by Arm (distance from the datum line). Total moment divided by total weight gives the final CG location." },
-        { title: "Fuel Planning", text: "Mandatory fuel reserves: VFR Day requires fuel to destination plus 30 minutes; VFR Night requires destination plus 45 minutes." },
-        { title: "Performance Charts", text: "Takeoff and landing distance charts account for weight, pressure altitude, temperature, wind component, and runway surface." },
-        { title: "NOTAMs & Flight Itinerary", text: "Checking NOTAMs (Notice to Air Missions) identifies active hazards, closed runways, and airspace restrictions along your route." },
-        { title: "Cross-Country Navigation Log", text: "Calculates true airspeed, wind correction angles, magnetic variation, compass headings, ground speed, and estimated time en route (ETE)." },
-        { title: "Aircraft Inspection", text: "The walk-around inspection verifies control surface integrity, fuel/oil levels, static ports clear, and absence of structural damage." },
-        { title: "Emergency Equipment", text: "Verification of first aid kits, ELT status, fire extinguishers, and personal flotation devices depending on route over water." },
-        { title: "Mass & Balance Limits", text: "Overloading increases stall speed, lengthens takeoff rolls, and reduces climb rate. Never exceed Maximum Takeoff Weight (MTOW)." },
-        { title: "Pre-Flight Summary", text: "Diligent pre-flight planning eliminates inflight surprises and ensures legal and structural airworthiness." }
+        { title: "3.1 Weight and Balance Principles", text: "Center of Gravity (CG) must remain within certified forward and aft limits to ensure aircraft stability and pitch control." },
+        { title: "3.2 Moment Calculation Math", text: "Moment equals Weight multiplied by Arm. Total moment divided by total gross weight determines the final CG position." },
+        { title: "3.3 Fuel Reserve Regulations", text: "VFR Day cross-country flights require fuel to destination plus 30 minutes reserve. VFR Night requires destination plus 45 minutes." },
+        { title: "3.4 Performance Charts", text: "Takeoff and landing roll distances are calculated using pressure altitude, ambient temperature, gross weight, and runway surface conditions." },
+        { title: "3.5 NOTAM Analysis", text: "Notices to Air Missions highlight runway closures, obstacle lighting outages, and active airspace restrictions along your flight plan." },
+        { title: "3.6 Navigation Log Construction", text: "Computes true airspeed, wind correction angles, magnetic heading, ground speed, and estimated time en route (ETE) per leg." },
+        { title: "3.7 Pre-Flight Walk-Around Inspection", text: "Physical inspection verifies control surface linkages, fuel tank caps, oil levels, static ports clear, and structural integrity." },
+        { title: "3.8 Emergency Gear Verification", text: "Ensures survival gear, first aid kits, ELT status, and flotation devices are inspected and secured onboard." },
+        { title: "3.9 MTOW Compliance", text: "Exceeding Maximum Takeoff Weight increases stall speed, lengthens takeoff distance, and degrades single-engine climb capability." },
+        { title: "3.10 Cross-Country Weather Routing", text: "Plotting check-points and alternate refueling stops ensures mission completion safety margins." },
+        { title: "3.11 Flight Itinerary Filing", text: "Filing a flight plan or itinerary with a responsible person or FIC ensures timely search and rescue activation if overdue." },
+        { title: "3.12 Pre-Flight Summary", text: "Thorough pre-flight calculation eliminates inflight hazards and guarantees structural airworthiness." }
       ],
       quiz: [
         { q: "How is moment calculated?", options: ["Weight divided by Arm", "Weight multiplied by Arm", "Arm divided by Weight", "Weight plus Arm"], correct: 1 },
         { q: "What is the mandatory fuel reserve for VFR Day cross-country flight?", options: ["15 minutes", "30 minutes", "45 minutes", "60 minutes"], correct: 1 },
-        { q: "What does NOTAM stand for?", options: ["Notice to Air Missions", "Notice of Tactical Air Movement", "Navigation Operational Time and Altitude Map", "Notice of Terminal Air Movement"], correct: 0 }
+        { q: "What does NOTAM stand for?", options: ["Notice to Air Missions", "Notice of Tactical Air Movement", "Navigation Operational Time", "Notice of Terminal Air Movement"], correct: 0 }
       ]
     },
     {
       id: 3,
       title: "4. Emergency Procedures",
       slides: [
-        { title: "Engine Failure After Takeoff", text: "Lower nose immediately to maintain gliding speed (Vyse/Vglide), select landing site straight ahead or slightly to sides. Do not turn back against low altitude." },
-        { title: "Inflight Engine Fire", text: "Shut off fuel selector, throttle idle, mixture idle, cabin heat off, execute emergency glide and forced landing checklist." },
-        { title: "Electrical Fire / Smoke", text: "Master switch OFF, cabin vents open, avionics off, isolate faulty circuit breaker if identifiable, land at nearest suitable airport." },
-        { title: "Lost Procedures (The 5 Cs)", text: "Climb, Confess, Comply, Conserve, and Crawl (radar/GPS navigation assistance)." },
-        { title: "Radio Communication Failure", text: "Squawk 7600. Look for light gun signals from control tower: Steady Green = Cleared to land, Steady Red = Give way." },
-        { title: "Inadvertent IMC Entry", text: "Transition immediately to full instrument flight, maintain wings level, establish 180-degree turn to exit instrument meteorological conditions." },
-        { title: "Spin Recovery", text: "Power idle, ailerons neutral, full rudder opposite to spin direction, briskly push elevator forward to break stall, level wings upon recovery." },
-        { title: "Ditching / Water Landing", text: "Transmit Mayday on 121.5, inflate life vests after exiting aircraft, jettison doors prior to touchdown if permitted." },
-        { title: "Emergency Transponder Codes", text: "7500 = Hijacking / Unlawful Interference, 7600 = Lost Communications, 7700 = General Emergency." },
-        { title: "Emergency Summary", text: "Aviate, Navigate, Communicate. Muscle memory and checklist discipline save lives in dynamic emergencies." }
+        { title: "4.1 Engine Failure After Takeoff", text: "Lower nose immediately to establish best glide speed (Vyse/Vglide), select landing zone straight ahead. Do not attempt a reverse turn below 500 ft AGL." },
+        { title: "4.2 Inflight Engine Fire Protocol", text: "Fuel selector OFF, throttle idle, mixture cut-off, cabin heat OFF, establish emergency glide and execute forced landing checklist." },
+        { title: "4.3 Electrical Fire / Smoke Isolation", text: "Master switch OFF, cabin vents OPEN, avionics OFF, isolate faulty circuit breaker if identifiable, land at nearest suitable airport." },
+        { title: "4.4 Lost Procedures (The 5 Cs)", text: "Climb, Confess, Comply, Conserve fuel, and Crawl (utilize radar or GPS tracking vectors)." },
+        { title: "4.5 Radio Communication Failure", text: "Squawk 7600 on transponder. Monitor airport light gun signals: Steady Green = Land, Steady Red = Give way." },
+        { title: "4.6 Inadvertent IMC Transition", text: "Transition immediately to full instrument flight, maintain level wings, and establish a 180-degree turn to exit instrument meteorological conditions." },
+        { title: "4.7 Spin Recovery Technique", text: "Throttle idle, ailerons neutral, full opposite rudder against spin rotation, briskly push elevator forward to break stall, level wings." },
+        { title: "4.8 Ditching Water Protocol", text: "Transmit MAYDAY on 121.5, lock harnesses, prepare life rafts, and jettison cabin doors just prior to water contact." },
+        { title: "4.9 Emergency Transponder Codes", text: "7500 = Hijacking / Unlawful Interference, 7600 = Lost Communications, 7700 = General Emergency." },
+        { title: "4.10 Forced Landing Site Selection", text: "Prioritize flat open fields, firm terrain, and alignment with wind direction over obstacles." },
+        { title: "4.11 Post-Landing Survival", text: "Evacuate aircraft quickly, secure emergency locator beacon, and establish shelter." },
+        { title: "4.12 Emergency Summary", text: "Aviate, Navigate, Communicate. Procedural discipline under pressure saves lives." }
       ],
       quiz: [
-        { q: "What transponder code is dialed during an emergency?", options: ["7500", "7600", "7700", "1200"], correct: 2 },
-        { q: "What transponder code signifies lost communications?", options: ["7500", "7600", "7700", "1200"], correct: 1 },
-        { q: "What are the initial steps in engine failure after takeoff?", options: ["Call ATC immediately", "Lower nose to maintain glide speed", "Attempt engine restart", "Turn back to runway"], correct: 1 }
+        { q: "What transponder code is set during an active emergency?", options: ["7500", "7600", "7700", "1200"], correct: 2 },
+        { q: "What transponder code represents total communications failure?", options: ["7500", "7600", "7700", "1200"], correct: 1 },
+        { q: "What is the primary action during an engine failure immediately after takeoff?", options: ["Turn back to runway", "Lower nose to establish glide speed", "Call tower", "Restart engine"], correct: 1 }
       ]
     },
     {
       id: 4,
       title: "5. Flight Theory & Aerodynamics",
       slides: [
-        { title: "Four Forces of Flight", text: "Lift, Weight, Thrust, and Drag act upon an aircraft in flight. In steady unaccelerated flight, Lift equals Weight and Thrust equals Drag." },
-        { title: "Bernoulli's Principle", text: "Velocity of airflow increases over the curved upper camber of an airfoil, creating lower static pressure and generating upward lift." },
-        { title: "Angle of Attack (AOA)", text: "Angle between the chord line of the airfoil and the relative wind. Exceeding the critical AOA results in an aerodynamic stall." },
-        { title: "Types of Drag", text: "Parasite drag (form, skin friction, interference) increases with speed. Induced drag is a byproduct of lift generation and increases at lower speeds." },
-        { title: "Load Factor & G-Force", text: "Load factor is the ratio of lift to weight. Steep turns and abrupt maneuvers increase load factor, raising stall speeds." },
-        { title: "Stability Axes", text: "Pitch (lateral axis / elevators), Roll (longitudinal axis / ailerons), and Yaw (vertical axis / rudder)." },
-        { title: "Propeller Torque & P-Factor", text: "Asymmetric blade effect (P-factor) causes the aircraft to yaw to the left at high angles of attack due to descending blade bite." },
-        { title: "Ground Effect", text: "Operating within one wingspan of the ground reduces induced drag, causing the aircraft to float during landing flare." },
-        { title: "Wing Planplan & Sweep",    text: "Aspect ratio and taper ratio govern wing efficiency, induced drag mitigation, and stall characteristics." },
-        { title: "Aerodynamics Summary", text: "Understanding lift vectors and aerodynamic limits ensures safe flight envelope management." }
+        { title: "5.1 Four Forces of Flight", text: "Lift, Weight, Thrust, and Drag act on an aircraft. In steady unaccelerated flight, Lift balances Weight and Thrust balances Drag." },
+        { title: "5.2 Bernoulli's Lift Principle", text: "Airflow velocity increases over the curved upper camber of an airfoil, creating lower static pressure and generating upward lift." },
+        { title: "5.3 Angle of Attack (AOA)", text: "Angle between wing chord line and relative wind. Exceeding critical AOA causes airflow separation and aerodynamic stall." },
+        { title: "5.4 Parasite vs. Induced Drag", text: "Parasite drag increases with airspeed (skin friction, form drag). Induced drag is a byproduct of lift and increases at lower speeds." },
+        { title: "5.5 Load Factor & G-Forces", text: "Load factor represents lift divided by weight. Steep banks and turbulence increase load factor, raising stall speeds." },
+        { title: "5.6 Aircraft Stability Axes", text: "Pitch (lateral axis via elevators), Roll (longitudinal axis via ailerons), and Yaw (vertical axis via rudder)." },
+        { title: "5.7 Propeller Torque & P-Factor", text: "Asymmetric blade effect (P-factor) causes left-turning tendency at high angles of attack due to descending blade bite." },
+        { title: "5.8 Ground Effect Cushion", text: "Operating within one wingspan of ground reduces induced drag, causing aircraft float during landing flare." },
+        { title: "5.9 Wing Planform Efficiency", text: "High aspect ratio wings reduce induced drag, improving glide performance and long-range efficiency." },
+        { title: "5.10 Stall Warning Systems", text: "Pneumatic or electric stall warning horns sound 5 to 10 knots above actual aerodynamic stall speed." },
+        { title: "5.11 Sideslips and Forward Slips", text: "Combining opposite rudder and aileron allows steep descent profiles without gaining airspeed." },
+        { title: "5.12 Aerodynamics Summary", text: "Mastery of lift vectors and stall boundaries ensures safe flight envelope control." }
       ],
       quiz: [
-        { q: "What four forces act on an aircraft in steady flight?", options: ["Lift, Drag, Gravity, Speed", "Lift, Weight, Thrust, Drag", "Thrust, Gravity, Friction, Lift", "Power, Drag, Weight, Speed"], correct: 1 },
-        { q: "What occurs when an aircraft exceeds its critical Angle of Attack?", options: ["Maximum airspeed", "Aerodynamic stall", "Increased lift coefficient", "Spin entry elimination"], correct: 1 },
-        { q: "Which drag type increases as airspeed increases?", options: ["Induced drag", "Parasite drag", "Profile drag", "Ground drag"], correct: 1 }
+        { q: "What four forces act on an aircraft in steady flight?", options: ["Lift, Weight, Thrust, Drag", "Lift, Drag, Speed, Gravity", "Thrust, Weight, Friction, Power", "Speed, Lift, Gravity, Drag"], correct: 0 },
+        { q: "What occurs when an aircraft exceeds its critical Angle of Attack?", options: ["Maximum speed", "Aerodynamic stall", "Maximum lift", "Spin elimination"], correct: 1 },
+        { q: "Which drag category increases as airspeed increases?", options: ["Induced drag", "Parasite drag", "Ground drag", "Profile drag"], correct: 1 }
       ]
     },
     {
       id: 5,
       title: "6. Human Factors & Fit for Flight",
       slides: [
-        { title: "IMSAFE Checklist", text: "Illness, Medication, Stress, Alcohol, Fatigue, Emotion. Self-assess before accepting any flight assignment." },
-        { title: "Hypoxia", text: "Oxygen deficiency in body tissues. Symptoms include euphoria, headaches, impaired judgment, and cyanosis. Supplemental oxygen required above 10,000 ft." },
-        { title: "Spatial Disorientation", text: "Loss of proper orientation regarding position and motion relative to gravity. Trust your flight instruments over inner ear sensations." },
-        { title: "Carbon Monoxide Poisoning", text: "CO enters cabin through cracked exhaust shrouds. Odorless and colorless; causes drowsiness, headaches, and incapacitation." },
-        { title: "Vestibular Illusions", text: "The leans, graveyard spiral, and Coriolis illusion trick the inner ear during instrument or low-visibility flight." },
-        { title: "Dehydration & Nutrition", text: "Low cabin humidity accelerates dehydration, fatigue, and cognitive decline. Maintain hydration and blood sugar levels." },
-        { title: "Stress & Pilot Workload", text: "Tunnel vision and task saturation occur under extreme stress. Mitigate via crew resource management (CRM) and task prioritization." },
-        { title: "Vision in Flight", text: "Dark adaptation takes up to 30 minutes. Use off-center scanning techniques at night to detect low-contrast targets." },
-        { title: "Circadian Rhythm & Fatigue", text: "Shift work, irregular schedules, and sleep deprivation degrade reaction time comparable to blood alcohol intoxication." },
-        { title: "Human Factors Summary", text: "Recognizing personal physiological limits is just as vital as pre-flight aircraft inspection." }
+        { title: "6.1 IMSAFE Self-Assessment", text: "Illness, Medication, Stress, Alcohol, Fatigue, Emotion. Complete personal audit prior to flight execution." },
+        { title: "6.2 Hypoxia Symptoms", text: "Oxygen deficiency in tissues causes euphoria, impaired judgment, and cyanosis. Supplemental oxygen required above 10,000 ft ASL." },
+        { title: "6.3 Spatial Disorientation", text: "Inner ear fluid confusion during low visibility causes false sensation of attitude. Trust your flight instruments." },
+        { title: "6.4 Carbon Monoxide Hazards", text: "Cracked exhaust shrouds leak odorless CO gas into cabin, causing headaches, dizziness, and cognitive failure." },
+        { title: "6.5 Vestibular Illusions", text: "The leans, graveyard spiral, and Coriolis illusion trick inner ear receptors during instrument flight." },
+        { title: "6.6 Dehydration & Cognitive Decay", text: "Low cabin humidity accelerates fatigue and slows reaction times. Maintain hydration schedules." },
+        { title: "6.7 Stress & Task Saturation", text: "Tunnel vision occurs under heavy stress. Utilize Crew Resource Management (CRM) and task prioritization." },
+        { title: "6.8 Night Vision Adaptation", text: "Dark adaptation requires 30 minutes. Use off-center scanning techniques at night to detect low-contrast objects." },
+        { title: "6.9 Circadian Rhythms & Fatigue", text: "Shift work and sleep debt degrade cognitive performance equivalent to blood alcohol intoxication." },
+        { title: "6.10 Vestibular Recovery", text: "Isolate inner ear confusion by cross-checking attitude indicator, altimeter, and heading indicator." },
+        { title: "6.11 Passenger Briefing Rules", text: "Mandatory briefing covering seatbelts, emergency exits, fire extinguishers, and sterile cockpit rules." },
+        { title: "6.12 Human Factors Summary", text: "Recognizing personal physiological limits is just as vital as pre-flight aircraft inspection." }
       ],
       quiz: [
-        { q: "What does the 'I' in IMSAFE stand for?", options: ["Inspection", "Illness", "Ignition", "Instrument"], correct: 1 },
-        { q: "At what cabin altitude is supplemental oxygen generally required for crew during prolonged flight?", options: ["5,000 feet", "8,000 feet", "10,000 feet", "15,000 feet"], correct: 2 },
-        { q: "What is a primary symptom of carbon monoxide poisoning in flight?", options: ["Sudden alertness", "Headache and drowsiness", "Extreme cold sensation", "Improved night vision"], correct: 1 }
+        { q: "What does the 'I' in IMSAFE represent?", options: ["Inspection", "Illness", "Ignition", "Instrument"], correct: 1 },
+        { q: "At what cabin altitude is supplemental oxygen required during prolonged flight?", options: ["5,000 feet", "8,000 feet", "10,000 feet", "15,000 feet"], correct: 2 },
+        { q: "What is a primary sign of carbon monoxide poisoning?", options: ["Heightened alertness", "Headache and drowsiness", "Extreme cold feeling", "Enhanced night vision"], correct: 1 }
       ]
     },
     {
       id: 6,
       title: "7. Airspace Classes & Rules",
       slides: [
-        { title: "Airspace Classification Overview", text: "Canadian airspace is categorized into controlled (Classes A, B, C, D, E) and uncontrolled (Class G) airspace." },
-        { title: "Class A Airspace", text: "Controlled high-altitude airspace from 18,000 feet ASL up to FL660. IFR only; all aircraft must be under ATC control." },
-        { title: "Class B Airspace", text: "Controlled airspace from 12,500 feet ASL up to 18,000 feet ASL (or low-level airways). Both VFR and IFR permitted with clearance." },
-        { title: "Class C Airspace", text: "Controlled airspace around major airports. Two-way radio communication required prior to entry; ATC provides separation for IFR from VFR." },
-        { title: "Class D Airspace", text: "Controlled airspace around tower-controlled airports. Two-way radio comms required; traffic information provided to all." },
-        { title: "Class E Airspace", text: "Controlled airspace designated for airways or terminal transitions where VFR flight is permitted without ATC clearance." },
-        { title: "Class G Airspace", text: "Uncontrolled airspace where ATC does not exercise control. Flight information service provided where available." },
-        { title: "Special Use Airspace", text: "CYR (Restricted), CYD (Danger), and CYA (Advisory) areas where special hazards or military operations take place." },
-        { title: "Transponder Airspace", text: "Mode C mandatory airspace requires an encoded transponder reporting pressure altitude." },
-        { title: "Airspace Summary", text: "Knowing airspace boundaries and entry requirements prevents inadvertent NORDO (no radio) incursions." }
+        { title: "7.1 Airspace Structure Overview", text: "Canadian airspace is categorized into controlled (Classes A, B, C, D, E) and uncontrolled (Class G) sectors." },
+        { title: "7.2 Class A Airspace", text: "Controlled high-altitude airspace from 18,000 feet ASL to FL660. IFR only; mandatory ATC separation." },
+        { title: "7.3 Class B Airspace", text: "Controlled airspace from 12,500 feet ASL to 18,000 feet ASL. Both VFR and IFR permitted with mandatory ATC clearance." },
+        { title: "7.4 Class C Airspace", text: "Controlled airspace around major airports. Two-way radio comms required; ATC separates IFR from VFR traffic." },
+        { title: "7.5 Class D Airspace", text: "Controlled airspace around tower-controlled airports. Two-way radio communication required with traffic advisories." },
+        { title: "7.6 Class E Airspace", text: "Controlled airspace designated for airways and transitions where VFR flight operates without ATC clearance." },
+        { title: "7.7 Class G Airspace", text: "Uncontrolled airspace where ATC does not exercise control. Flight information service provided where available." },
+        { title: "7.8 Special Use Airspace: CYR", text: "Restricted airspace (CYR) where flight is prohibited unless authorized by controlling agency." },
+        { title: "7.9 Special Use Airspace: CYD & CYA", text: "Danger areas (CYD) and Advisory areas (CYA) identifying military exercises or environmental hazards." },
+        { title: "7.10 Transponder Requirement Zones", text: "Mode C mandatory airspace requires an encoded transponder reporting pressure altitude." },
+        { title: "7.11 Aerodrome Traffic Zones", text: "Special procedures around busy uncontrolled airports utilizing mandatory frequency (MF) or aerodrome traffic frequency (ATF)." },
+        { title: "7.12 Airspace Summary", text: "Knowing airspace boundaries prevents inadvertent NORDO incursions and safety penalties." }
       ],
       quiz: [
-        { q: "Which airspace class is strictly uncontrolled?", options: ["Class A", "Class C", "Class E", "Class G"], correct: 3 },
-        { q: "At what altitude does Class A airspace typically begin in Canada?", options: ["10,000 feet ASL", "12,500 feet ASL", "18,000 feet ASL", "FL290"], correct: 2 },
-        { q: "What is required before entering Class C airspace?", options: ["Filing a full flight plan", "Two-way radio communication established with ATC", "An active IFR rating", "A Mode S transponder only"], correct: 1 }
+        { q: "Which airspace class is completely uncontrolled?", options: ["Class A", "Class C", "Class E", "Class G"], correct: 3 },
+        { q: "At what altitude does Class A airspace start in Canada?", options: ["10,000 feet ASL", "12,500 feet ASL", "18,000 feet ASL", "FL290"], correct: 2 },
+        { q: "What is mandatory before entering Class C airspace?", options: ["Full flight plan", "Two-way radio communication with ATC", "Instrument rating", "Mode S transponder"], correct: 1 }
       ]
     },
     {
       id: 7,
       title: "8. Aeronautic Maps & Navigation",
       slides: [
-        { title: "Visual Navigation Charts (VNC)", text: "VNCs (1:500,000 scale) are the primary aeronautical charts for VFR navigation, showing topography, airports, and airspace limits." },
-        { title: "VFR Terminal Area Charts (VTA)", text: "VTAs (1:250,000 scale) provide higher-detail depictions of complex controlled airspace around major metropolitan centers." },
-        { title: "Latitude and Longitude", text: "Earth is mapped using meridians of longitude and parallels of latitude. One minute of latitude equals one nautical mile." },
-        { title: "True vs. Magnetic North", text: "True North points to the geographic pole. Magnetic North points to the magnetic pole. Isogonic lines show magnetic variation." },
-        { title: "Aeronautical Symbols", text: "Airports with paved runways are shown in blue/magenta circles; seaplane bases, obstacles, and towers have unique standardized symbols." },
-        { title: "MEF (Maximum Elevation Figures)", text: "Grid numbers on VNCs indicating the highest known elevation in that quadrangle plus clearance margin." },
-        { title: "Dead Reckoning & Pilotage", text: "Pilotage uses visual ground checkpoints. Dead reckoning calculates headings and times based on airspeed, wind, and heading." },
-        { title: "Radio Navigation Aids", text: "VOR (VHF Omnidirectional Range) and NDB (Non-Directional Beacon) ground stations provide radio radials and bearings." },
-        { title: "GPS and RNAV", text: "Global Positioning System provides continuous satellite-derived latitude, longitude, ground speed, and track guidance." },
-        { title: "Navigation Summary", text: "Combining pilotage, dead reckoning, and modern electronic navigation ensures pinpoint cross-country execution." }
+        { title: "8.1 Visual Navigation Charts (VNC)", text: "VNCs (1:500,000 scale) are primary charts for VFR navigation, depicting topography, airports, and airspace boundaries." },
+        { title: "8.2 VFR Terminal Area Charts (VTA)", text: "VTAs (1:250,000 scale) provide high-detail depictions of complex controlled airspace around metropolitan centers." },
+        { title: "8.3 Latitude and Longitude Grid", text: "Earth is mapped using meridians and parallels. One minute of latitude equals exactly one nautical mile." },
+        { title: "8.4 True vs. Magnetic North", text: "True North points to geographic poles; Magnetic North points to magnetic poles. Isogonic lines show variation." },
+        { title: "8.5 Aeronautical Chart Symbols", text: "Airports with paved runways shown in blue/magenta; towers, obstacles, and seaplane bases use standardized symbols." },
+        { title: "8.6 Maximum Elevation Figures (MEF)", text: "Grid numbers on VNCs indicating highest known elevation in quadrangle plus clearance safety margin." },
+        { title: "8.7 Dead Reckoning & Pilotage", text: "Pilotage uses visual ground checkpoints. Dead reckoning calculates headings using airspeed, wind, and time." },
+        { title: "8.8 Radio Navigation Aids (VOR)", text: "VHF Omnidirectional Range ground stations provide reliable magnetic radials for en route tracking." },
+        { title: "8.9 GPS and RNAV Systems", text: "Global Positioning System provides continuous satellite-derived position, track angle, and ground speed." },
+        { title: "8.10 Compass Deviation Errors", text: "Electrical equipment onboard can cause magnetic compass deviation errors requiring correction card calibration." },
+        { title: "8.11 Flight Planning Computations", text: "Using E6B flight computers to calculate wind correction angles and fuel burn rates accurately." },
+        { title: "8.12 Navigation Summary", text: "Combining pilotage, dead reckoning, and electronic guidance guarantees precise cross-country execution." }
       ],
       quiz: [
-        { q: "What is the standard scale of a Canadian VNC chart?", options: ["1:250,000", "1:500,000", "1:1,000,000", "1:50,000"], correct: 1 },
-        { q: "What does one minute of latitude equal on an aeronautical chart?", options: ["One statute mile", "One kilometer", "One nautical mile", "Ten kilometers"], correct: 2 },
-        { q: "What do Maximum Elevation Figures (MEF) on a chart represent?", options: ["Average terrain height", "Highest known elevation in a quadrant plus buffer", "Runway elevation", "Airspace floor altitude"], correct: 1 }
+        { q: "What is the standard scale of a Canadian VNC aeronautical chart?", options: ["1:250,000", "1:500,000", "1:1,000,000", "1:50,000"], correct: 1 },
+        { q: "What does one minute of latitude equal on a nautical chart?", options: ["One statute mile", "One kilometer", "One nautical mile", "Ten kilometers"], correct: 2 },
+        { q: "What do Maximum Elevation Figures (MEF) represent?", options: ["Terrain height plus safety buffer", "Average elevation", "Runway length", "Airspace floor"], correct: 0 }
       ]
     }
   ];
 
-  // ROC-A SPECIALTY DATA
+  // ROC-A CERTIFICATION SPECIALTY MODULE
   const rocaModule = {
     title: "ROC-A Certification (Aeronautical Radio)",
     slides: [
-      { title: "Introduction to ROC-A", text: "The Restricted Operator Certificate with Aeronautical Qualification is legally required in Canada to operate any aeronautical VHF radio station." },
-      { title: "VHF Frequency Bands", text: "Aviation communication operates in the Very High Frequency (VHF) band between 118.0 MHz and 137.0 MHz using AM (Amplitude Modulation)." },
-      { title: "Standard Phonetic Alphabet", text: "Alpha, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliett, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, Zulu." },
-      { title: "Standard Phraseology", text: "Clear, concise transmissions are mandatory. Key terms: ACKNOWLEDGE, AFFIRMATIVE, CORRECTION, GO AHEAD, READ BACK, ROGER, STANDBY." },
-      { title: "Distress Call (MAYDAY)", text: "MAYDAY MAYDAY MAYDAY. Used when facing grave and imminent danger requiring immediate assistance. Transmitted on 121.5 MHz or active frequency." },
-      { title: "Urgency Call (PAN-PAN)", text: "PAN-PAN PAN-PAN PAN-PAN. Used for urgency conditions concerning the safety of an aircraft or person, but not immediate life danger." },
-      { title: "Radio Check Scale", text: "Readability scale 1 to 5: 1 = Unreadable, 2 = Readable now and then, 3 = Readable with difficulty, 4 = Readable, 5 = Perfectly readable." },
-      { title: "Blind Transmissions", text: "If station is unresponsive, transmit twice: 'TRANSMITTING BLIND... [Aircraft Call Sign] [Details]'" },
-      { title: "Emergency Frequency", text: "121.5 MHz is the international aeronautical emergency frequency monitored continuously by air traffic facilities and search satellites." },
-      { title: "ROC-A Summary", text: "Radio discipline ensures air safety, orderly airport traffic patterns, and immediate response during distress events." }
+      { title: "ROC.1 Certification Requirement", text: "The Restricted Operator Certificate with Aeronautical Qualification is legally required in Canada to operate any aeronautical VHF radio station." },
+      { title: "ROC.2 VHF Frequency Spectrum", text: "Aviation radio communications operate in the Very High Frequency band between 118.0 MHz and 137.0 MHz using Amplitude Modulation (AM)." },
+      { title: "ROC.3 Phonetic Alphabet Standard", text: "Alpha, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliett, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, Zulu." },
+      { title: "ROC.4 Standard Aviation Phraseology", text: "Clear concise transmissions are mandatory. Key terms: ACKNOWLEDGE, AFFIRMATIVE, CORRECTION, GO AHEAD, READ BACK, ROGER, STANDBY." },
+      { title: "ROC.5 Distress Call (MAYDAY)", text: "MAYDAY MAYDAY MAYDAY. Used when facing grave and imminent danger requiring immediate assistance. Transmitted on 121.5 MHz." },
+      { title: "ROC.6 Urgency Call (PAN-PAN)", text: "PAN-PAN PAN-PAN PAN-PAN. Used for urgency conditions concerning safety of aircraft or person, but not immediate life danger." },
+      { title: "ROC.7 Radio Readability Scale", text: "Readability scale 1 to 5: 1 = Unreadable, 2 = Readable now and then, 3 = Readable with difficulty, 4 = Readable, 5 = Perfectly readable." },
+      { title: "ROC.8 Blind Transmissions Protocol", text: "If station is unresponsive, transmit twice: 'TRANSMITTING BLIND... [Call Sign] [Details]'" },
+      { title: "ROC.9 Emergency Frequency 121.5", text: "121.5 MHz is the international aeronautical emergency frequency monitored continuously by air traffic facilities and SAR satellites." },
+      { title: "ROC.10 Radio Discipline Summary", text: "Proper radio discipline ensures air safety, orderly airport traffic patterns, and immediate response during emergencies." }
     ],
     quiz: [
       { q: "What frequency band is used for aeronautical VHF radio communications?", options: ["HF 2-30 MHz", "VHF 118.0 - 137.0 MHz", "UHF 400-500 MHz", "FM 88-108 MHz"], correct: 1 },
@@ -376,7 +392,7 @@
     ]
   };
 
-  let unlockedModules = [0]; // First module unlocked by default
+  let unlockedModules = [0];
   let currentModuleIndex = 0;
   let currentSlideIndex = 0;
   let isSpecialty = false;
@@ -396,7 +412,7 @@
         if (isUnlocked) {
           startModule(idx, false);
         } else {
-          alert("Module locked! Complete and pass the quiz (80%+) on the preceding module to unlock.");
+          alert("Module locked! Complete and pass the preceding module quiz (80%+) to unlock.");
         }
       };
       grid.appendChild(btn);
@@ -507,7 +523,7 @@
     
     if (percentage >= 80) {
       resultEl.style.color = 'var(--accent)';
-      resultEl.textContent = `Passed! Score: ${percentage}% (${score}/${activeQuiz.length}). Great job!`;
+      resultEl.textContent = `Passed! Score: ${percentage}% (${score}/${activeQuiz.length}). Excellent work!`;
       
       if (!isSpecialty && currentModuleIndex < curriculum.length - 1) {
         if (!unlockedModules.includes(currentModuleIndex + 1)) {
@@ -519,7 +535,7 @@
       document.getElementById('quiz-return-btn').style.display = 'block';
     } else {
       resultEl.style.color = 'var(--danger)';
-      resultEl.textContent = `Failed. Score: ${percentage}% (${score}/${activeQuiz.length}). You need at least 80% to pass. Review slides and try again.`;
+      resultEl.textContent = `Failed. Score: ${percentage}% (${score}/${activeQuiz.length}). Minimum 80% required to pass. Review material and retry.`;
     }
   }
 
@@ -527,7 +543,6 @@
     renderDashboard();
   }
 
-  // Initialize App on load
   renderDashboard();
 </script>
 
