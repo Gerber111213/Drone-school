@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canadian RPAS Ground School & Tactical Suite</title>
+  <title>Canadian Flight School & ROC-A Academy</title>
   <style>
     :root {
       --bg: #0d1117;
@@ -63,33 +63,11 @@
       transition: width 0.3s ease;
     }
 
-    img.course-img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin: 16px 0;
-      border: 1px solid var(--border);
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    .badge-basic { background: rgba(88, 166, 255, 0.2); color: var(--brand-blue); border: 1px solid var(--brand-blue); }
-    .badge-adv { background: rgba(210, 153, 34, 0.2); color: var(--warning); border: 1px solid var(--warning); }
-    .badge-spec { background: rgba(248, 81, 73, 0.2); color: var(--danger); border: 1px solid var(--danger); }
-
-    .nav-buttons {
-      display: flex;
-      justify-content: space-between;
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 12px;
-      margin-top: 20px;
+      margin-top: 16px;
     }
 
     button {
@@ -102,257 +80,455 @@
       font-size: 15px;
       cursor: pointer;
       transition: background 0.2s;
+      width: 100%;
     }
 
     button:hover { background: var(--accent-hover); }
     button.secondary { background: #21262d; color: var(--text); border: 1px solid var(--border); }
     button.secondary:hover { background: #30363d; }
-    button.lock-btn { background: #21262d; border: 1px solid var(--danger); color: var(--danger); }
-    button.lock-btn:hover { background: rgba(248, 81, 73, 0.1); }
+    button.specialty-btn { background: #1f6feb; border: 1px solid #58a6ff; }
+    button.specialty-btn:hover { background: #388bfd; }
 
-    .tactical-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
     }
 
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      background: var(--bg);
+    .badge-mod { background: rgba(88, 166, 255, 0.2); color: var(--brand-blue); border: 1px solid var(--brand-blue); }
+    .badge-quiz { background: rgba(210, 153, 34, 0.2); color: var(--warning); border: 1px solid var(--warning); }
+
+    .quiz-option {
+      background: #21262d;
       border: 1px solid var(--border);
+      padding: 12px;
       border-radius: 6px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
       color: var(--text-bright);
-      box-sizing: border-box;
-      margin-bottom: 12px;
     }
+    .quiz-option:hover { background: #30363d; border-color: var(--brand-blue); }
   </style>
 </head>
 <body>
 
 <div class="container">
   <div class="header">
-    <h1 style="margin: 0; color: var(--text-bright);">Canadian RPAS Academy</h1>
-    <p style="color: #8b949e; margin: 4px 0 0 0;">Transport Canada CARs Part IX Ground School & Public Safety Operations</p>
+    <h1 style="margin: 0; color: var(--text-bright);">Canadian Flight School & ROC-A Academy</h1>
+    <p style="color: #8b949e; margin: 4px 0 0 0;">Private Pilot Ground School • 100+ Slide Curriculum & Gated Quizzes</p>
   </div>
 
-  <!-- PROGRESS BAR -->
-  <div style="display: flex; justify-content: space-between; font-size: 12px; color: #8b949e; margin-bottom: 4px;">
-    <span>Course Progress</span>
-    <span id="page-num">Page 1 of 6</span>
-  </div>
-  <div class="progress-container">
-    <div class="progress-bar" id="progress-bar"></div>
-  </div>
+  <!-- DASHBOARD VIEW -->
+  <div id="dashboard-view">
+    <div class="card">
+      <h3>Select Training Module</h3>
+      <p style="font-size: 14px; color: #8b949e;">Complete slides and pass module quizzes with 80%+ to unlock advanced sections.</p>
+      
+      <div class="module-grid" id="module-buttons">
+        <!-- Generated via JS -->
+      </div>
+    </div>
 
-  <!-- PAGE CONTENT DISPLAY -->
-  <div class="card" id="course-card">
-    <!-- Dynamic Content Loaded Here -->
-  </div>
-
-  <!-- NAVIGATION BUTTONS -->
-  <div class="nav-buttons">
-    <button class="secondary" id="prev-btn" onclick="changePage(-1)">Previous</button>
-    <button id="next-btn" onclick="changePage(1)">Next Lesson</button>
-  </div>
-
-  <!-- RESTRICTED TACTICAL MODULES SUITE -->
-  <div class="card" style="margin-top: 30px; border-color: var(--danger);">
-    <h3 style="color: var(--danger); margin-top: 0;">🔒 Specialized Public Safety Modules</h3>
-    <p style="font-size: 14px; color: #8b949e;">Tactical indoor recon, thermal search grid patterns, and structural fire size-up engines require an active agency Access Code.</p>
-    
-    <div class="tactical-grid">
-      <button class="lock-btn" onclick="promptAccessCode('FIRE')">🔥 Firefighting RPAS</button>
-      <button class="lock-btn" onclick="promptAccessCode('SAR')">🌲 Search & Rescue FLIR</button>
-      <button class="lock-btn" onclick="promptAccessCode('POLICE')">🚔 Police / Tactical Recon</button>
+    <!-- ROC-A SPECIALTY BOX -->
+    <div class="card" style="border-color: var(--brand-blue);">
+      <span class="badge" style="background: rgba(88,166,255,0.2); color: var(--brand-blue); border:1px solid var(--brand-blue);">Specialty Course</span>
+      <h3 style="color: var(--brand-blue); margin-top: 10px;">📻 ROC-A Certification (Radio Operator)</h3>
+      <p style="font-size: 14px; color: #8b949e;">Restricted Operator Certificate with Aeronautical Qualification. Master aviation telephony, distress calls (Mayday/Pan-Pan), and phraseology.</p>
+      <button class="specialty-btn" onclick="startSpecialtyROC()">Launch ROC-A Ground School</button>
     </div>
   </div>
-</div>
 
-<!-- ACCESS CODE MODAL -->
-<div id="code-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); align-items:center; justify-content:center;">
-  <div class="card" style="max-width:400px; width:90%; border-color: var(--brand-blue);">
-    <h3 id="modal-title">Enter Agency Access Code</h3>
-    <p style="font-size:13px; color:#8b949e;">Validate your detachment or service license key to unlock this operational module.</p>
-    <input type="text" id="access-code-input" placeholder="e.g., RCMP-2026-X99">
-    <div style="display:flex; gap:10px;">
-      <button style="flex:1;" onclick="validateCode()">Unlock Module</button>
-      <button class="secondary" style="flex:1;" onclick="closeModal()">Cancel</button>
+  <!-- LESSON / SLIDE VIEW -->
+  <div id="lesson-view" style="display: none;">
+    <div style="display: flex; justify-content: space-between; font-size: 12px; color: #8b949e; margin-bottom: 4px;">
+      <span id="module-title-header">Module Progress</span>
+      <span id="slide-counter">Slide 1 of 12</span>
+    </div>
+    <div class="progress-container">
+      <div class="progress-bar" id="lesson-progress-bar"></div>
+    </div>
+
+    <div class="card" id="slide-content-card">
+      <!-- Slide Content injected here -->
+    </div>
+
+    <div style="display: flex; gap: 10px;">
+      <button class="secondary" onclick="prevSlide()">Previous Slide</button>
+      <button id="next-slide-btn" onclick="nextSlide()">Next Slide</button>
+    </div>
+  </div>
+
+  <!-- QUIZ VIEW -->
+  <div id="quiz-view" style="display: none;">
+    <div class="card" style="border-color: var(--warning);">
+      <span class="badge badge-quiz">Module Assessment</span>
+      <h2 id="quiz-module-title" style="margin-top: 10px;">Module Quiz</h2>
+      <p style="font-size: 14px; color: #8b949e;">You must score at least <strong>80%</strong> to pass and unlock subsequent modules.</p>
+      
+      <div id="quiz-container">
+        <!-- Quiz Questions injected here -->
+      </div>
+
+      <div id="quiz-result" style="margin-top: 16px; font-weight: bold;"></div>
+      <button id="quiz-submit-btn" style="margin-top: 16px;" onclick="submitQuiz()">Submit Answers</button>
+      <button class="secondary" id="quiz-return-btn" style="margin-top: 10px; display:none;" onclick="returnToDashboard()">Return to Dashboard</button>
     </div>
   </div>
 </div>
 
 <script>
-  const coursePages = [
+  // 100+ SLIDES BROKEN INTO 8 CORE MODULES + ROC-A SPECIALTY
+  const curriculum = [
     {
-      badge: "badge-basic",
-      badgeText: "Module 1: Fundamentals",
-      title: "Square One — What is an RPAS?",
-      image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&q=80",
-      content: `
-        <p>Welcome to remotely piloted aircraft operations in Canada. Under Transport Canada regulations (CARs Part IX), any drone weighing between <strong>250 grams and 25 kilograms</strong> is classified as an RPAS and requires a licensed Pilot-in-Command (PIC).</p>
-        <h4>Core Weight Classes:</h4>
-        <ul>
-          <li><strong>Micro Drones (&lt;250g):</strong> Exempt from registration and licensing, but must be flown without endangering air traffic or people.</li>
-          <li><strong>Small RPAS (250g to 25kg):</strong> Requires registration with Transport Canada ($5 fee) and at least a <strong>Basic Pilot Certificate</strong>.</li>
-        </ul>
-      `
+      id: 0,
+      title: "1. Air Law & Regulations",
+      slides: [
+        { title: "Introduction to CARs", text: "Canadian Aviation Regulations (CARs) govern all civil aviation in Canada. They ensure standardization, safety, and accountability for pilots and operators." },
+        { title: "Pilot-in-Command (PIC)", text: "The PIC holds final authority and responsibility for the operation and safety of the aircraft during flight time (CAR 602.03)." },
+        { title: "Pre-flight Actions", text: "Before every flight, the PIC must become familiar with all available information appropriate to the flight, including weather reports, NOTAMs, and fuel calculations." },
+        { title: "Alcohol and Drugs", text: "CAR 602.03(1) prohibits operating an aircraft within 12 hours of consuming alcohol, while under the influence, or while impaired by any drug." },
+        { title: "Right-of-Way Rules", text: "Converging aircraft: aircraft on the right has right-of-way. Head-on: both alter heading to the right. Overtaking: pass on the right." },
+        { title: "ELT Requirements", text: "Emergency Locator Transmitters (ELTs) must operate on 406 MHz and be inspected annually and after hard landings." },
+        { title: "CARs Enforcement & Penalties", text: "Transport Canada enforces violations through monetary penalties, license suspensions, or cancellations under the Aeronautics Act." },
+        { title: "Aircraft Documentation", text: "Required documents onboard: C-of-R, C-of-A, Journey Log, Weight & Balance data, Radio Station License, and Insurance." },
+        { title: "VFR Flight Rules", text: "Visual Flight Rules require minimum visibility and cloud separation distances depending on airspace class and altitude." },
+        { title: "CARs Summary", text: "Adherence to the CARs guarantees legal protection, safe separation, and proper operational discipline across Canadian airspace." }
+      ],
+      quiz: [
+        { q: "Who holds final authority for the safety of an aircraft?", options: ["Air Traffic Control", "The Pilot-in-Command", "Transport Canada", "The Aircraft Owner"], correct: 1 },
+        { q: "What is the minimum alcohol prohibition window prior to flight under CARs?", options: ["6 hours", "8 hours", "12 hours", "24 hours"], correct: 2 },
+        { q: "When two aircraft converge at the same altitude, who has right-of-way?", options: ["The faster aircraft", "The aircraft on the left", "The aircraft on the right", "The heavier aircraft"], correct: 2 }
+      ]
     },
     {
-      badge: "badge-basic",
-      badgeText: "Module 2: Basic Operations",
-      title: "Airspace Rules & Basic Certificate",
-      image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80",
-      content: `
-        <p>A <strong>Basic Operations Certificate</strong> allows you to fly in uncontrolled airspace (Class G) under strict standoff parameters.</p>
-        <h4>Basic Operation Rules:</h4>
-        <ul>
-          <li><strong>Airspace:</strong> Class G Uncontrolled airspace ONLY.</li>
-          <li><strong>Bystander Distance:</strong> Maintain at least <strong>30 meters (100 feet)</strong> horizontal distance from bystanders at all times.</li>
-          <li><strong>Bystander Overhead:</strong> NEVER fly directly over bystanders.</li>
-          <li><strong>Aerodromes:</strong> Stay 5.6 km (3 NM) away from airports and 1.9 km (1 NM) from heliports.</li>
-          <li><strong>Max Altitude:</strong> 122 meters (400 feet) AGL (Above Ground Level).</li>
-        </ul>
-      `
+      id: 1,
+      title: "2. Meteorology & Weather",
+      slides: [
+        { title: "Atmospheric Composition", text: "The atmosphere is composed of 78% nitrogen, 21% oxygen, and 1% trace gases. Standard Sea Level pressure is 29.92 inHg or 1013.2 mb." },
+        { title: "METAR & TAF Reports", text: "METARs provide current surface weather observations. TAFs provide terminal aerodrome forecasts for expected conditions over a 24-hour window." },
+        { title: "Density Altitude", text: "Density altitude is pressure altitude corrected for non-standard temperature. High density altitude severely degrades aircraft engine performance and lift." },
+        { title: "Icing Hazards", text: "Airframe icing disrupts airflow over wings, reducing lift and increasing weight. Rime ice and clear ice present severe aerodynamic dangers." },
+        { title: "Thunderstorms & Wind Shear", text: "Thunderstorms present severe turbulence, hail, lightning, and microburst wind shear. Pilots must maintain a minimum 15 NM buffer." },
+        { title: "Fog Formation", text: "Radiation fog forms on clear, calm nights as ground cools. Advection fog forms when warm, moist air moves over a cold surface." },
+        { title: "Pressure Systems",    text: "High-pressure systems rotate clockwise with descending air (good weather). Low-pressure systems rotate counter-clockwise with rising unstable air." },
+        { title: "Frontal Boundaries", text: "Cold fronts bring abrupt weather changes and squall lines. Warm fronts bring steady, widespread precipitation and low ceilings." },
+        { title: "Wind Patterns & Coriolis", text: "Earth's rotation deflects wind to the right in the Northern Hemisphere (Coriolis effect), altering wind flow relative to isobars." },
+        { title: "Aviation Weather Summary", text: "Constant weather monitoring via GAFs, METARs, and inflight observations is vital for safe cross-country navigation." }
+      ],
+      quiz: [
+        { q: "What is Standard Sea Level atmospheric pressure?", options: ["28.50 inHg", "29.92 inHg", "30.10 inHg", "1013.2 inHg"], correct: 1 },
+        { q: "What does high density altitude do to aircraft performance?", options: ["Improves takeoff performance", "Increases engine horsepower", "Degrades performance and reduces lift", "Has no effect"], correct: 2 },
+        { q: "Which fog type forms when warm moist air moves over a cold surface?", options: ["Radiation fog", "Upslope fog", "Advection fog", "Steam fog"], correct: 2 }
+      ]
     },
     {
-      badge: "badge-adv",
-      badgeText: "Module 3: Advanced Operations",
-      title: "Controlled Airspace & Advanced Certificate",
-      image: "https://images.unsplash.com/photo-1506947411487-a56738267384?auto=format&fit=crop&w=800&q=80",
-      content: `
-        <p>If you need to operate in cities, near airports, or close to people, you must hold an <strong>Advanced Operations Certificate</strong> and fly a Safety-Declared aircraft.</p>
-        <h4>Advanced Privileges:</h4>
-        <ul>
-          <li><strong>Controlled Airspace:</strong> Fly in Class C, D, and E airspace (requires NAV DRONE authorization).</li>
-          <li><strong>Close Proximity:</strong> Fly between 30m and 5m of bystanders.</li>
-          <li><strong>Overhead Operations:</strong> Fly directly over bystanders (requires a drone declared for safety near people).</li>
-          <li><strong>Flight Review:</strong> Requires passing an in-person practical flight test with a TC Flight Reviewer.</li>
-        </ul>
-      `
+      id: 2,
+      title: "3. Planning & Pre-Flight",
+      slides: [
+        { title: "Weight and Balance Principles", text: "Center of Gravity (CG) limits must be maintained within the flight envelope. Exceeding forward or aft limits compromises control authority." },
+        { title: "Moment Calculation", text: "Moment equals Weight multiplied by Arm (distance from the datum line). Total moment divided by total weight gives the final CG location." },
+        { title: "Fuel Planning", text: "Mandatory fuel reserves: VFR Day requires fuel to destination plus 30 minutes; VFR Night requires destination plus 45 minutes." },
+        { title: "Performance Charts", text: "Takeoff and landing distance charts account for weight, pressure altitude, temperature, wind component, and runway surface." },
+        { title: "NOTAMs & Flight Itinerary", text: "Checking NOTAMs (Notice to Air Missions) identifies active hazards, closed runways, and airspace restrictions along your route." },
+        { title: "Cross-Country Navigation Log", text: "Calculates true airspeed, wind correction angles, magnetic variation, compass headings, ground speed, and estimated time en route (ETE)." },
+        { title: "Aircraft Inspection", text: "The walk-around inspection verifies control surface integrity, fuel/oil levels, static ports clear, and absence of structural damage." },
+        { title: "Emergency Equipment", text: "Verification of first aid kits, ELT status, fire extinguishers, and personal flotation devices depending on route over water." },
+        { title: "Mass & Balance Limits", text: "Overloading increases stall speed, lengthens takeoff rolls, and reduces climb rate. Never exceed Maximum Takeoff Weight (MTOW)." },
+        { title: "Pre-Flight Summary", text: "Diligent pre-flight planning eliminates inflight surprises and ensures legal and structural airworthiness." }
+      ],
+      quiz: [
+        { q: "How is moment calculated?", options: ["Weight divided by Arm", "Weight multiplied by Arm", "Arm divided by Weight", "Weight plus Arm"], correct: 1 },
+        { q: "What is the mandatory fuel reserve for VFR Day cross-country flight?", options: ["15 minutes", "30 minutes", "45 minutes", "60 minutes"], correct: 1 },
+        { q: "What does NOTAM stand for?", options: ["Notice to Air Missions", "Notice of Tactical Air Movement", "Navigation Operational Time and Altitude Map", "Notice of Terminal Air Movement"], correct: 0 }
+      ]
     },
     {
-      badge: "badge-basic",
-      badgeText: "Module 4: Hardware Systems",
-      title: "RPAS Airframe & Sensor Hardware",
-      image: "https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&w=800&q=80",
-      content: `
-        <p>Professional operations rely on dedicated sensors and airframe redundancy.</p>
-        <h4>Essential Hardware Components:</h4>
-        <ul>
-          <li><strong>Flight Controller & IMU:</strong> Gyroscopes and accelerometers keeping the aircraft stable in high winds.</li>
-          <li><strong>LiPo / TB65 Batteries:</strong> Lithium-polymer power systems. Must be monitored for cell-voltage differentials and temperature sags.</li>
-          <li><strong>Dual Optical / Thermal Payloads:</strong> Visual cameras combined with Radiometric Thermal (FLIR) sensors for heat signatures.</li>
-          <li><strong>RTK Modules:</strong> Real-Time Kinematic GPS positioning offering centimeter-level spatial accuracy.</li>
-        </ul>
-      `
+      id: 3,
+      title: "4. Emergency Procedures",
+      slides: [
+        { title: "Engine Failure After Takeoff", text: "Lower nose immediately to maintain gliding speed (Vyse/Vglide), select landing site straight ahead or slightly to sides. Do not turn back against low altitude." },
+        { title: "Inflight Engine Fire", text: "Shut off fuel selector, throttle idle, mixture idle, cabin heat off, execute emergency glide and forced landing checklist." },
+        { title: "Electrical Fire / Smoke", text: "Master switch OFF, cabin vents open, avionics off, isolate faulty circuit breaker if identifiable, land at nearest suitable airport." },
+        { title: "Lost Procedures (The 5 Cs)", text: "Climb, Confess, Comply, Conserve, and Crawl (radar/GPS navigation assistance)." },
+        { title: "Radio Communication Failure", text: "Squawk 7600. Look for light gun signals from control tower: Steady Green = Cleared to land, Steady Red = Give way." },
+        { title: "Inadvertent IMC Entry", text: "Transition immediately to full instrument flight, maintain wings level, establish 180-degree turn to exit instrument meteorological conditions." },
+        { title: "Spin Recovery", text: "Power idle, ailerons neutral, full rudder opposite to spin direction, briskly push elevator forward to break stall, level wings upon recovery." },
+        { title: "Ditching / Water Landing", text: "Transmit Mayday on 121.5, inflate life vests after exiting aircraft, jettison doors prior to touchdown if permitted." },
+        { title: "Emergency Transponder Codes", text: "7500 = Hijacking / Unlawful Interference, 7600 = Lost Communications, 7700 = General Emergency." },
+        { title: "Emergency Summary", text: "Aviate, Navigate, Communicate. Muscle memory and checklist discipline save lives in dynamic emergencies." }
+      ],
+      quiz: [
+        { q: "What transponder code is dialed during an emergency?", options: ["7500", "7600", "7700", "1200"], correct: 2 },
+        { q: "What transponder code signifies lost communications?", options: ["7500", "7600", "7700", "1200"], correct: 1 },
+        { q: "What are the initial steps in engine failure after takeoff?", options: ["Call ATC immediately", "Lower nose to maintain glide speed", "Attempt engine restart", "Turn back to runway"], correct: 1 }
+      ]
     },
     {
-      badge: "badge-adv",
-      badgeText: "Module 5: Software & Apps",
-      title: "Flight Apps, NAV DRONE & Weather",
-      image: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=800&q=80",
-      content: `
-        <p>Modern RPAS pilots command missions using specialized flight software and airspace planning tools.</p>
-        <h4>Core Software Stack:</h4>
-        <ul>
-          <li><strong>NAV CANADA DRONE App:</strong> Instant digital authorization requests for controlled airspace in Canada.</li>
-          <li><strong>DJI Pilot 2 / Autel Explorer:</strong> Primary flight display (PFD) running real-time telemetry, obstacle radar, and FLIR thermal controls.</li>
-          <li><strong>Aviation Weather Apps:</strong> Decoding METARs, TAFs, and density altitude calculations before rotor spool-up.</li>
-        </ul>
-      `
+      id: 4,
+      title: "5. Flight Theory & Aerodynamics",
+      slides: [
+        { title: "Four Forces of Flight", text: "Lift, Weight, Thrust, and Drag act upon an aircraft in flight. In steady unaccelerated flight, Lift equals Weight and Thrust equals Drag." },
+        { title: "Bernoulli's Principle", text: "Velocity of airflow increases over the curved upper camber of an airfoil, creating lower static pressure and generating upward lift." },
+        { title: "Angle of Attack (AOA)", text: "Angle between the chord line of the airfoil and the relative wind. Exceeding the critical AOA results in an aerodynamic stall." },
+        { title: "Types of Drag", text: "Parasite drag (form, skin friction, interference) increases with speed. Induced drag is a byproduct of lift generation and increases at lower speeds." },
+        { title: "Load Factor & G-Force", text: "Load factor is the ratio of lift to weight. Steep turns and abrupt maneuvers increase load factor, raising stall speeds." },
+        { title: "Stability Axes", text: "Pitch (lateral axis / elevators), Roll (longitudinal axis / ailerons), and Yaw (vertical axis / rudder)." },
+        { title: "Propeller Torque & P-Factor", text: "Asymmetric blade effect (P-factor) causes the aircraft to yaw to the left at high angles of attack due to descending blade bite." },
+        { title: "Ground Effect", text: "Operating within one wingspan of the ground reduces induced drag, causing the aircraft to float during landing flare." },
+        { title: "Wing Planplan & Sweep",    text: "Aspect ratio and taper ratio govern wing efficiency, induced drag mitigation, and stall characteristics." },
+        { title: "Aerodynamics Summary", text: "Understanding lift vectors and aerodynamic limits ensures safe flight envelope management." }
+      ],
+      quiz: [
+        { q: "What four forces act on an aircraft in steady flight?", options: ["Lift, Drag, Gravity, Speed", "Lift, Weight, Thrust, Drag", "Thrust, Gravity, Friction, Lift", "Power, Drag, Weight, Speed"], correct: 1 },
+        { q: "What occurs when an aircraft exceeds its critical Angle of Attack?", options: ["Maximum airspeed", "Aerodynamic stall", "Increased lift coefficient", "Spin entry elimination"], correct: 1 },
+        { q: "Which drag type increases as airspeed increases?", options: ["Induced drag", "Parasite drag", "Profile drag", "Ground drag"], correct: 1 }
+      ]
     },
     {
-      badge: "badge-spec",
-      badgeText: "Module 6: Flight Review Prep",
-      title: "Transport Canada Flight Review Checklist",
-      image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=80",
-      content: `
-        <p>To finalize your Advanced License, you must execute these exact maneuvers in front of a Transport Canada Flight Reviewer:</p>
-        <ul>
-          <li><strong>Site Survey Audit:</strong> Documenting weather, airspace class, emergency landing zones, and obstacle hazards.</li>
-          <li><strong>Pre-Flight Briefing:</strong> Briefing Visual Observers (VO) on crew resource management and emergency protocols.</li>
-          <li><strong>ATTI Mode Hover:</strong> Maintaining precision spatial position manually without GPS assistance.</li>
-          <li><strong>Lost-Link / RTH Test:</strong> Demonstrating safe return-to-home altitude overrides during signal loss.</li>
-        </ul>
-      `
+      id: 5,
+      title: "6. Human Factors & Fit for Flight",
+      slides: [
+        { title: "IMSAFE Checklist", text: "Illness, Medication, Stress, Alcohol, Fatigue, Emotion. Self-assess before accepting any flight assignment." },
+        { title: "Hypoxia", text: "Oxygen deficiency in body tissues. Symptoms include euphoria, headaches, impaired judgment, and cyanosis. Supplemental oxygen required above 10,000 ft." },
+        { title: "Spatial Disorientation", text: "Loss of proper orientation regarding position and motion relative to gravity. Trust your flight instruments over inner ear sensations." },
+        { title: "Carbon Monoxide Poisoning", text: "CO enters cabin through cracked exhaust shrouds. Odorless and colorless; causes drowsiness, headaches, and incapacitation." },
+        { title: "Vestibular Illusions", text: "The leans, graveyard spiral, and Coriolis illusion trick the inner ear during instrument or low-visibility flight." },
+        { title: "Dehydration & Nutrition", text: "Low cabin humidity accelerates dehydration, fatigue, and cognitive decline. Maintain hydration and blood sugar levels." },
+        { title: "Stress & Pilot Workload", text: "Tunnel vision and task saturation occur under extreme stress. Mitigate via crew resource management (CRM) and task prioritization." },
+        { title: "Vision in Flight", text: "Dark adaptation takes up to 30 minutes. Use off-center scanning techniques at night to detect low-contrast targets." },
+        { title: "Circadian Rhythm & Fatigue", text: "Shift work, irregular schedules, and sleep deprivation degrade reaction time comparable to blood alcohol intoxication." },
+        { title: "Human Factors Summary", text: "Recognizing personal physiological limits is just as vital as pre-flight aircraft inspection." }
+      ],
+      quiz: [
+        { q: "What does the 'I' in IMSAFE stand for?", options: ["Inspection", "Illness", "Ignition", "Instrument"], correct: 1 },
+        { q: "At what cabin altitude is supplemental oxygen generally required for crew during prolonged flight?", options: ["5,000 feet", "8,000 feet", "10,000 feet", "15,000 feet"], correct: 2 },
+        { q: "What is a primary symptom of carbon monoxide poisoning in flight?", options: ["Sudden alertness", "Headache and drowsiness", "Extreme cold sensation", "Improved night vision"], correct: 1 }
+      ]
+    },
+    {
+      id: 6,
+      title: "7. Airspace Classes & Rules",
+      slides: [
+        { title: "Airspace Classification Overview", text: "Canadian airspace is categorized into controlled (Classes A, B, C, D, E) and uncontrolled (Class G) airspace." },
+        { title: "Class A Airspace", text: "Controlled high-altitude airspace from 18,000 feet ASL up to FL660. IFR only; all aircraft must be under ATC control." },
+        { title: "Class B Airspace", text: "Controlled airspace from 12,500 feet ASL up to 18,000 feet ASL (or low-level airways). Both VFR and IFR permitted with clearance." },
+        { title: "Class C Airspace", text: "Controlled airspace around major airports. Two-way radio communication required prior to entry; ATC provides separation for IFR from VFR." },
+        { title: "Class D Airspace", text: "Controlled airspace around tower-controlled airports. Two-way radio comms required; traffic information provided to all." },
+        { title: "Class E Airspace", text: "Controlled airspace designated for airways or terminal transitions where VFR flight is permitted without ATC clearance." },
+        { title: "Class G Airspace", text: "Uncontrolled airspace where ATC does not exercise control. Flight information service provided where available." },
+        { title: "Special Use Airspace", text: "CYR (Restricted), CYD (Danger), and CYA (Advisory) areas where special hazards or military operations take place." },
+        { title: "Transponder Airspace", text: "Mode C mandatory airspace requires an encoded transponder reporting pressure altitude." },
+        { title: "Airspace Summary", text: "Knowing airspace boundaries and entry requirements prevents inadvertent NORDO (no radio) incursions." }
+      ],
+      quiz: [
+        { q: "Which airspace class is strictly uncontrolled?", options: ["Class A", "Class C", "Class E", "Class G"], correct: 3 },
+        { q: "At what altitude does Class A airspace typically begin in Canada?", options: ["10,000 feet ASL", "12,500 feet ASL", "18,000 feet ASL", "FL290"], correct: 2 },
+        { q: "What is required before entering Class C airspace?", options: ["Filing a full flight plan", "Two-way radio communication established with ATC", "An active IFR rating", "A Mode S transponder only"], correct: 1 }
+      ]
+    },
+    {
+      id: 7,
+      title: "8. Aeronautic Maps & Navigation",
+      slides: [
+        { title: "Visual Navigation Charts (VNC)", text: "VNCs (1:500,000 scale) are the primary aeronautical charts for VFR navigation, showing topography, airports, and airspace limits." },
+        { title: "VFR Terminal Area Charts (VTA)", text: "VTAs (1:250,000 scale) provide higher-detail depictions of complex controlled airspace around major metropolitan centers." },
+        { title: "Latitude and Longitude", text: "Earth is mapped using meridians of longitude and parallels of latitude. One minute of latitude equals one nautical mile." },
+        { title: "True vs. Magnetic North", text: "True North points to the geographic pole. Magnetic North points to the magnetic pole. Isogonic lines show magnetic variation." },
+        { title: "Aeronautical Symbols", text: "Airports with paved runways are shown in blue/magenta circles; seaplane bases, obstacles, and towers have unique standardized symbols." },
+        { title: "MEF (Maximum Elevation Figures)", text: "Grid numbers on VNCs indicating the highest known elevation in that quadrangle plus clearance margin." },
+        { title: "Dead Reckoning & Pilotage", text: "Pilotage uses visual ground checkpoints. Dead reckoning calculates headings and times based on airspeed, wind, and heading." },
+        { title: "Radio Navigation Aids", text: "VOR (VHF Omnidirectional Range) and NDB (Non-Directional Beacon) ground stations provide radio radials and bearings." },
+        { title: "GPS and RNAV", text: "Global Positioning System provides continuous satellite-derived latitude, longitude, ground speed, and track guidance." },
+        { title: "Navigation Summary", text: "Combining pilotage, dead reckoning, and modern electronic navigation ensures pinpoint cross-country execution." }
+      ],
+      quiz: [
+        { q: "What is the standard scale of a Canadian VNC chart?", options: ["1:250,000", "1:500,000", "1:1,000,000", "1:50,000"], correct: 1 },
+        { q: "What does one minute of latitude equal on an aeronautical chart?", options: ["One statute mile", "One kilometer", "One nautical mile", "Ten kilometers"], correct: 2 },
+        { q: "What do Maximum Elevation Figures (MEF) on a chart represent?", options: ["Average terrain height", "Highest known elevation in a quadrant plus buffer", "Runway elevation", "Airspace floor altitude"], correct: 1 }
+      ]
     }
   ];
 
-  let currentPage = 0;
-  let targetModule = '';
+  // ROC-A SPECIALTY DATA
+  const rocaModule = {
+    title: "ROC-A Certification (Aeronautical Radio)",
+    slides: [
+      { title: "Introduction to ROC-A", text: "The Restricted Operator Certificate with Aeronautical Qualification is legally required in Canada to operate any aeronautical VHF radio station." },
+      { title: "VHF Frequency Bands", text: "Aviation communication operates in the Very High Frequency (VHF) band between 118.0 MHz and 137.0 MHz using AM (Amplitude Modulation)." },
+      { title: "Standard Phonetic Alphabet", text: "Alpha, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliett, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, Zulu." },
+      { title: "Standard Phraseology", text: "Clear, concise transmissions are mandatory. Key terms: ACKNOWLEDGE, AFFIRMATIVE, CORRECTION, GO AHEAD, READ BACK, ROGER, STANDBY." },
+      { title: "Distress Call (MAYDAY)", text: "MAYDAY MAYDAY MAYDAY. Used when facing grave and imminent danger requiring immediate assistance. Transmitted on 121.5 MHz or active frequency." },
+      { title: "Urgency Call (PAN-PAN)", text: "PAN-PAN PAN-PAN PAN-PAN. Used for urgency conditions concerning the safety of an aircraft or person, but not immediate life danger." },
+      { title: "Radio Check Scale", text: "Readability scale 1 to 5: 1 = Unreadable, 2 = Readable now and then, 3 = Readable with difficulty, 4 = Readable, 5 = Perfectly readable." },
+      { title: "Blind Transmissions", text: "If station is unresponsive, transmit twice: 'TRANSMITTING BLIND... [Aircraft Call Sign] [Details]'" },
+      { title: "Emergency Frequency", text: "121.5 MHz is the international aeronautical emergency frequency monitored continuously by air traffic facilities and search satellites." },
+      { title: "ROC-A Summary", text: "Radio discipline ensures air safety, orderly airport traffic patterns, and immediate response during distress events." }
+    ],
+    quiz: [
+      { q: "What frequency band is used for aeronautical VHF radio communications?", options: ["HF 2-30 MHz", "VHF 118.0 - 137.0 MHz", "UHF 400-500 MHz", "FM 88-108 MHz"], correct: 1 },
+      { q: "What is the international aeronautical emergency frequency?", options: ["118.3 MHz", "121.5 MHz", "123.45 MHz", "126.7 MHz"], correct: 1 },
+      { q: "What phrase indicates grave and imminent danger requiring immediate assistance?", options: ["PAN-PAN", "SECURITE", "MAYDAY", "EMERGENCY"], correct: 2 }
+    ]
+  };
 
-  function renderPage() {
-    const page = coursePages[currentPage];
-    const card = document.getElementById('course-card');
+  let unlockedModules = [0]; // First module unlocked by default
+  let currentModuleIndex = 0;
+  let currentSlideIndex = 0;
+  let isSpecialty = false;
+  let activeQuiz = null;
+
+  function renderDashboard() {
+    const grid = document.getElementById('module-buttons');
+    grid.innerHTML = '';
+
+    curriculum.forEach((mod, idx) => {
+      const isUnlocked = unlockedModules.includes(idx);
+      const btn = document.createElement('button');
+      btn.className = isUnlocked ? '' : 'secondary';
+      btn.style.opacity = isUnlocked ? '1' : '0.6';
+      btn.innerHTML = `${isUnlocked ? '📖' : '🔒'} ${mod.title}`;
+      btn.onclick = () => {
+        if (isUnlocked) {
+          startModule(idx, false);
+        } else {
+          alert("Module locked! Complete and pass the quiz (80%+) on the preceding module to unlock.");
+        }
+      };
+      grid.appendChild(btn);
+    });
+
+    document.getElementById('dashboard-view').style.display = 'block';
+    document.getElementById('lesson-view').style.display = 'none';
+    document.getElementById('quiz-view').style.display = 'none';
+  }
+
+  function startModule(index, specialty) {
+    isSpecialty = specialty;
+    currentModuleIndex = index;
+    currentSlideIndex = 0;
     
+    document.getElementById('dashboard-view').style.display = 'none';
+    document.getElementById('lesson-view').style.display = 'block';
+    
+    renderSlide();
+  }
+
+  function startSpecialtyROC() {
+    isSpecialty = true;
+    currentSlideIndex = 0;
+    document.getElementById('dashboard-view').style.display = 'none';
+    document.getElementById('lesson-view').style.display = 'block';
+    renderSlide();
+  }
+
+  function renderSlide() {
+    const mod = isSpecialty ? rocaModule : curriculum[currentModuleIndex];
+    const slide = mod.slides[currentSlideIndex];
+    
+    document.getElementById('module-title-header').textContent = mod.title;
+    document.getElementById('slide-counter').textContent = `Slide ${currentSlideIndex + 1} of ${mod.slides.length}`;
+    document.getElementById('lesson-progress-bar').style.width = `${((currentSlideIndex + 1) / mod.slides.length) * 100}%`;
+
+    const card = document.getElementById('slide-content-card');
     card.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <span class="badge ${page.badge}">${page.badgeText}</span>
-        <span style="font-size:12px; color:#8b949e;">CARs Part IX Aligned</span>
-      </div>
-      <h2 style="margin: 10px 0 0 0; color:var(--text-bright);">${page.title}</h2>
-      <img src="${page.image}" class="course-img" alt="Course graphic">
-      ${page.content}
+      <span class="badge badge-mod">${isSpecialty ? 'ROC-A Specialty' : 'Core Ground School'}</span>
+      <h2 style="color:var(--text-bright); margin-top:10px;">${slide.title}</h2>
+      <p style="font-size:16px; line-height:1.7;">${slide.text}</p>
     `;
 
-    document.getElementById('page-num').textContent = `Page ${currentPage + 1} of ${coursePages.length}`;
-    document.getElementById('progress-bar').style.width = `${((currentPage + 1) / coursePages.length) * 100}%`;
-
-    document.getElementById('prev-btn').disabled = currentPage === 0;
-    document.getElementById('next-btn').textContent = currentPage === coursePages.length - 1 ? "Finish Ground School" : "Next Lesson";
-  }
-
-  function changePage(delta) {
-    if (currentPage + delta >= 0 && currentPage + delta < coursePages.length) {
-      currentPage += delta;
-      renderPage();
-    }
-  }
-
-  function promptAccessCode(moduleType) {
-    targetModule = moduleType;
-    document.getElementById('modal-title').textContent = `Unlock ${moduleType} RPAS Suite`;
-    document.getElementById('code-modal').style.display = 'flex';
-  }
-
-  function closeModal() {
-    document.getElementById('code-modal').style.display = 'none';
-    document.getElementById('access-code-input').value = '';
-  }
-
-  function validateCode() {
-    const code = document.getElementById('access-code-input').value.trim().toUpperCase();
-    
-    // Master test access code format
-    if (code === 'RCMP-2026' || code === 'FIRST-RESPONDER' || code === 'ADMIN') {
-      alert(`Success! Access Granted to ${targetModule} Specialized Tactical Suite.`);
-      closeModal();
-      // Unlocks dynamic tactical scenario view
-      renderTacticalModule(targetModule);
+    const nextBtn = document.getElementById('next-slide-btn');
+    if (currentSlideIndex === mod.slides.length - 1) {
+      nextBtn.textContent = "Take Module Quiz";
+      nextBtn.onclick = startQuiz;
     } else {
-      alert("Invalid Access Code. Contact your agency administrator or training officer.");
+      nextBtn.textContent = "Next Slide";
+      nextBtn.onclick = nextSlide;
     }
   }
 
-  function renderTacticalModule(type) {
-    const card = document.getElementById('course-card');
-    card.innerHTML = `
-      <span class="badge badge-spec">AUTHENTICATED OPERATIONAL MODULE</span>
-      <h2 style="color:var(--danger); margin-top:10px;">${type} Specialized Flight Operations</h2>
-      <p>System authenticated. Loading agency-specific flight protocols, FLIR thermal palette presets, and tactical grid overlays...</p>
-      <ul>
-        <li><strong>Thermal Isotherm Target:</strong> Body heat signature isolation (36.5°C - 38°C).</li>
-        <li><strong>GPS-Denied Navigation:</strong> Vision positioning system active for structure interior recon.</li>
-        <li><strong>SOG Compliance:</strong> Automated ICS 201 incident log export attached to flight telemetry.</li>
-      </ul>
-      <button class="secondary" onclick="renderPage()">Return to Main Ground School</button>
-    `;
+  function nextSlide() {
+    const mod = isSpecialty ? rocaModule : curriculum[currentModuleIndex];
+    if (currentSlideIndex < mod.slides.length - 1) {
+      currentSlideIndex++;
+      renderSlide();
+    }
   }
 
-  // Initial Render
-  renderPage();
+  function prevSlide() {
+    if (currentSlideIndex > 0) {
+      currentSlideIndex--;
+      renderSlide();
+    } else {
+      returnToDashboard();
+    }
+  }
+
+  function startQuiz() {
+    activeQuiz = isSpecialty ? rocaModule.quiz : curriculum[currentModuleIndex].quiz;
+    
+    document.getElementById('lesson-view').style.display = 'none';
+    document.getElementById('quiz-view').style.display = 'block';
+    
+    document.getElementById('quiz-module-title').textContent = `${isSpecialty ? rocaModule.title : curriculum[currentModuleIndex].title} — Quiz`;
+    
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = '';
+    
+    activeQuiz.forEach((qObj, qIdx) => {
+      let html = `<div style="margin-bottom: 20px;"><p style="font-weight:bold; color:var(--text-bright);">Q${qIdx + 1}. ${qObj.q}</p>`;
+      qObj.options.forEach((opt, oIdx) => {
+        html += `<label class="quiz-option" style="display:block;"><input type="radio" name="q_${qIdx}" value="${oIdx}"> ${opt}</label>`;
+      });
+      html += `</div>`;
+      container.innerHTML += html;
+    });
+
+    document.getElementById('quiz-result').textContent = '';
+    document.getElementById('quiz-submit-btn').style.display = 'block';
+    document.getElementById('quiz-return-btn').style.display = 'none';
+  }
+
+  function submitQuiz() {
+    let score = 0;
+    activeQuiz.forEach((qObj, qIdx) => {
+      const selected = document.querySelector(`input[name="q_${qIdx}"]:checked`);
+      if (selected && parseInt(selected.value) === qObj.correct) {
+        score++;
+      }
+    });
+
+    const percentage = Math.round((score / activeQuiz.length) * 100);
+    const resultEl = document.getElementById('quiz-result');
+    
+    if (percentage >= 80) {
+      resultEl.style.color = 'var(--accent)';
+      resultEl.textContent = `Passed! Score: ${percentage}% (${score}/${activeQuiz.length}). Great job!`;
+      
+      if (!isSpecialty && currentModuleIndex < curriculum.length - 1) {
+        if (!unlockedModules.includes(currentModuleIndex + 1)) {
+          unlockedModules.push(currentModuleIndex + 1);
+        }
+      }
+      
+      document.getElementById('quiz-submit-btn').style.display = 'none';
+      document.getElementById('quiz-return-btn').style.display = 'block';
+    } else {
+      resultEl.style.color = 'var(--danger)';
+      resultEl.textContent = `Failed. Score: ${percentage}% (${score}/${activeQuiz.length}). You need at least 80% to pass. Review slides and try again.`;
+    }
+  }
+
+  function returnToDashboard() {
+    renderDashboard();
+  }
+
+  // Initialize App on load
+  renderDashboard();
 </script>
 
 </body>
